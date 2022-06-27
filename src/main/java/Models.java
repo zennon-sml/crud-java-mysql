@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.Date;
 
 public class Models {
     public static Connection fazerConexao() {
@@ -18,17 +19,47 @@ public class Models {
             return null;
         }
     }
-    public static ResultSet selectAll(String entidade){
+    public static void selectAllEndereco(){
         try {
             Connection con = fazerConexao();
             Statement stmt = con.createStatement();
-            String query = "select * from "+entidade;
+            String query = "select * from endereco";
             ResultSet rs = stmt.executeQuery(query);
-            return rs;
+            //TODO instanciar objeto
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int id = rs.getInt(1);
+            String rua = rs.getString(2);
+            String numero = rs.getString(3);
+            String cidade = rs.getString(4);
+            String cep = rs.getString(5);
+            String estado = rs.getString(6);
+            System.out.println(id+"-"+rua+"-"+numero+"-"+cidade+"-"+cep+"-"+estado);
+            //TODO fazer um objeto e mandar pras views pra elas printar
         }
         catch (Exception e) {
             System.out.println(e);
-            return null;
+
+        }
+    }
+    public static void selectAllAluno(){
+        try {
+            Connection con = fazerConexao();
+            Statement stmt = con.createStatement();
+            String query = "select * from aluno";
+            ResultSet rs = stmt.executeQuery(query);
+            //TODO instanciar objeto
+            int id = rs.getInt(1);
+            String codigo = rs.getString(2);
+            String nome = rs.getString(3);
+            String telefone = rs.getString(4);
+            Date nasc = rs.getDate(5);
+            String sexo = rs.getString(6);
+            int fk_endereco = rs.getInt(7);
+            System.out.println(id+"-"+codigo+"-"+nome+"-"+telefone+"-"+nasc+"-"+sexo+"-"+fk_endereco);
+            //TODO fazer um objeto e mandar pras views pra elas printar
+        }
+        catch (Exception e) {
+            System.out.println(e);
         }
     }
 }
