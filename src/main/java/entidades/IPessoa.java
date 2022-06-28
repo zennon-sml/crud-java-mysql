@@ -1,10 +1,10 @@
 package entidades;
 
 public interface IPessoa {
-    void setId(String id);
+    void setId(int id);
     void setNome(String nome);
     void setTelefone(String telefone);
-    String getId();
+    int getId();
     String getNome();
     String getTelefone();
 }

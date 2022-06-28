@@ -1,8 +1,8 @@
 package escolha.crud;
 
 import entidades.Aluno;
-import java.util.Scanner;
 
+import java.util.Scanner;
 public class CRUDAluno {
     Aluno aluno = new Aluno();
     Scanner input = new Scanner(System.in);
@@ -11,7 +11,7 @@ public class CRUDAluno {
         System.out.print("Nome: ");
         aluno.setNome(input.nextLine());
         System.out.print("Matricula: ");
-        aluno.setId(input.nextLine());
+        aluno.setMatricula(input.nextLine());
         System.out.print("Data de Nascimento: ");
         aluno.setDataNas(input.nextLine());
         System.out.print("Telefone: ");
@@ -34,7 +34,20 @@ public class CRUDAluno {
         aluno.setComplemento(input.nextLine());
 
         //Manda pro banco agr
-        //System.out.printf("%s - %s - %s",aluno.getNome(), aluno.getRua(), aluno.getSexo());
+        System.out.println("Nome: "+aluno.getNome()+"\n" +
+                "Matricula: "+aluno.getMatricula()+"\n" +
+                "DataNas: "+aluno.getDataNas()+"\n" +
+                "Telefone: "+aluno.getTelefone()+"\n" +
+                "Sexo: "+aluno.getSexo()+"\n" +
+                "\n" +
+                "CEP: "+aluno.getCep()+"\n" +
+                "Estado: "+aluno.getEstado()+"\n" +
+                "Cidade: "+aluno.getCidade()+"\n" +
+                "Rua: "+aluno.getRua()+"\n" +
+                "Numero: "+aluno.getNumero()+"\n" +
+                "Complemento: "+aluno.getComplemento()
+        );
+
     }
     public void readAluno(){
         System.out.println("ReadAluno");

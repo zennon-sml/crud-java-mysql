@@ -1,7 +1,8 @@
 package entidades;
 
 public class Professor extends Endereco implements IPessoa{
-    String registro;
+    int id;
+    int registro;
     String nome;
     String telefone;
     String especialidade;
@@ -10,8 +11,8 @@ public class Professor extends Endereco implements IPessoa{
     //------------------------------------> sets
 
     @Override
-    public void setId(String registro){
-        this.registro = registro;
+    public void setId(int id){
+        this.id = id;
     }
 
     @Override
@@ -24,6 +25,7 @@ public class Professor extends Endereco implements IPessoa{
         this.telefone = telefone;
     }
 
+    public void setRegistro(int registro) {this.registro = registro;}
     public void setEspecialidade(String especialidade){
         this.especialidade = especialidade;
     }
@@ -35,8 +37,8 @@ public class Professor extends Endereco implements IPessoa{
     //-----------------------------------> gets
 
     @Override
-    public String getId() {
-        return registro;
+    public int getId() {
+        return id;
     }
 
     @Override
@@ -56,6 +58,8 @@ public class Professor extends Endereco implements IPessoa{
     public String getMaiorTitulacao() {
         return maiorTitulacao;
     }
+
+    public int getRegistro(){return registro; }
 }
 
 

@@ -1,6 +1,7 @@
 package entidades;
 
 public class Aluno extends Endereco implements IPessoa {
+    int id;
     String matricula;
     String nome;
     String telefone;
@@ -10,8 +11,8 @@ public class Aluno extends Endereco implements IPessoa {
     //------------------------------------> sets
 
     @Override
-    public void setId(String matricula){
-        this.matricula = matricula;
+    public void setId(int id){
+        this.id = id;
     }
 
     @Override
@@ -32,11 +33,13 @@ public class Aluno extends Endereco implements IPessoa {
         this.sexo = sexo;
     }
 
+    public  void setMatricula(String matricula) {this.matricula = matricula; }
+
     //-----------------------------------> gets
 
     @Override
-    public String getId() {
-        return matricula;
+    public int getId() {
+        return id;
     }
 
     @Override
@@ -56,4 +59,6 @@ public class Aluno extends Endereco implements IPessoa {
     public String getSexo() {
         return sexo;
     }
+
+    public String getMatricula(){return matricula;}
 }
