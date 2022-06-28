@@ -1,3 +1,5 @@
+import entidades.Endereco;
+
 import java.sql.*;
 import java.util.Date;
 
@@ -19,11 +21,14 @@ public class Models {
             return null;
         }
     }
+    //exemplo INSERT no banco
 //    public static void customQuery(String query){
 //        try {
 //            Connection con = fazerConexao();
-//            PreparedStatement stmt = con.PreparedStatement();
-//            stmt.executeQuery(query);
+//            PreparedStatement psmt;
+//            psmt = con.prepareStatement(query);
+//            psmt.execute();
+//            psmt.close();
 //            System.out.println("Query feita!!!!");
 //        }
 //        catch (Exception e) {
@@ -32,28 +37,46 @@ public class Models {
 //        }
 //    }
 
-    public static void selectAllEndereco(){
+    public static Endereco[] selectAllEndereco(){
         try {
             Connection con = fazerConexao();
             Statement stmt = con.createStatement();
+
+            //cria uma lista do tipo Endereco com o tamanho igual a o tanto de dado do banco
+            ResultSet linhas = stmt.executeQuery("select count(*) from endereco");
+            linhas.next();
+            Endereco[] enderecos = new Endereco[linhas.getInt(1)];//lista de todos os enderecos
+            int i = 0;
+            //faz a busca no banco por todos os valores
             String query = "select * from endereco;";
             ResultSet rs = stmt.executeQuery(query);
+            //loopa por todos os enderecos
             while (rs.next()) {
-                //TODO instanciar objeto
-                ResultSetMetaData rsmd = rs.getMetaData();
+                //pegando os dados do banco
                 int id = rs.getInt(1);
                 String rua = rs.getString(2);
                 String numero = rs.getString(3);
                 String cidade = rs.getString(4);
                 String cep = rs.getString(5);
                 String estado = rs.getString(6);
-                System.out.println(id + "-" + rua + "-" + numero + "-" + cidade + "-" + cep + "-" + estado);
-                //TODO fazer um objeto e mandar pras views pra elas printar
+                Endereco e = new Endereco();
+                //Instaciando objeto com os dados pegos
+                e.setIdEnd(id);
+                e.setRua(rua);
+                e.setNumero(numero);
+                e.setCidade(cidade);
+                e.setCep(cep);
+                e.setEstado(estado);
+                //coloca o novo objeto na lista enderecos
+                enderecos[i] = e;
+                i++;
             }
+            //retorna os objetos para serem printados pela View
+            return enderecos;
         }
         catch (Exception e) {
             System.out.println(e);
-
+            return null;
         }
     }
     public static void selectAllAluno(){
