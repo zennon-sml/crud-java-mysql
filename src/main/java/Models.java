@@ -1,7 +1,7 @@
+import entidades.Aluno;
 import entidades.Endereco;
 
 import java.sql.*;
-import java.util.Date;
 
 public class Models {
     public static Connection fazerConexao() {
@@ -33,7 +33,6 @@ public class Models {
 //        }
 //        catch (Exception e) {
 //            System.out.println(e);
-//
 //        }
 //    }
 
@@ -83,19 +82,28 @@ public class Models {
         try {
             Connection con = fazerConexao();
             Statement stmt = con.createStatement();
+
+            ResultSet linhas = stmt.executeQuery("select count(*) from aluno");
+            linhas.next();
+            Aluno[] alunos = (Aluno[]) new Endereco[linhas.getInt(1)];//lista de todos os enderecos
+            int i = 0;
+
             String query = "select * from aluno;";
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                //TODO instanciar objeto
                 int id = rs.getInt(1);
-                String codigo = rs.getString(2);
+                String matricula = rs.getString(2);
                 String nome = rs.getString(3);
                 String telefone = rs.getString(4);
                 Date nasc = rs.getDate(5);
                 String sexo = rs.getString(6);
                 int fk_endereco = rs.getInt(7);
-                System.out.println(id + "-" + codigo + "-" + nome + "-" + telefone + "-" + nasc + "-" + sexo + "-" + fk_endereco);
-                //TODO fazer um objeto e mandar pras views pra elas printar
+                Aluno a = new Aluno();
+                //TODO fazer novo objeto
+                a.setNome(nome);
+                a.setTelefone(telefone);
+                //a.setDataNas(nasc);
+                a.setSexo(sexo);
             }
         }
         catch (Exception e) {
