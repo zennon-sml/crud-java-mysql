@@ -1,9 +1,6 @@
 package consultas;
 
-import entidades.Aluno;
-import entidades.Disciplina;
-import entidades.Endereco;
-import entidades.Professor;
+import entidades.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -126,6 +123,66 @@ public class SelectById {
             d.setNumeroCreditos(num_credito);
 
             return d;
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+    public static Turma selectTurma(int turmaId){
+        try {
+            Connection con = conexao.fazerConexao();
+            Statement stmt = con.createStatement();
+
+            //faz a busca no banco por id
+            String query = "select * from turma where id = " + turmaId;
+            ResultSet rs = stmt.executeQuery(query);
+            rs.next();
+            int id = rs.getInt(1);
+            int codigo = rs.getInt(2);
+            String sala = rs.getString(3);
+            String horario = rs.getString(4);
+            int fk_professor_disciplina = rs.getInt(5);
+            Turma t = new Turma();
+            //TODO t.setId(id);
+            t.setCodigo(codigo);
+            t.setSala(sala);
+            t.setHorario(horario);
+            //TODO t.setFKprofessor(fk_professor_disciplina);
+
+            return t;
+        }
+        catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+    public static Curso selectCurso(int cursoId){
+        try {
+            Connection con = conexao.fazerConexao();
+            Statement stmt = con.createStatement();
+
+            //faz a busca no banco por id
+            String query = "select * from curso where id = " + cursoId;
+            ResultSet rs = stmt.executeQuery(query);
+            rs.next();
+            int id = rs.getInt(1);
+            int codigo = rs.getInt(2);
+            String nome = rs.getString(3);
+            String descricao = rs.getString(4);
+            int num_periodo = rs.getInt(5);
+            int fk_aluno = rs.getInt(6);
+            int fk_disciplina = rs.getInt(7);
+            Curso c = new Curso();
+            //TODO c.setId(id);
+            c.setCodigo(codigo);
+            c.setNome(nome);
+            c.setDescricao(descricao);
+            c.setNumeroPeriodos(num_periodo);
+            //TODO c.getFKaluno(fk_aluno);
+            //TODO c.getFKdisciplina(fk_disciplina);
+
+            return c;
         }
         catch (Exception e) {
             System.out.println(e);
