@@ -131,12 +131,12 @@ VALUES(8,'LAB 2','20:30:00',2);
 INSERT into turma(codigo,sala,horario,fk_professor_disciplina)
 VALUES(12,'LAB 3','20:30:00',3);
 
-insert into aluno(fk_professor,fk_aluno)
+insert into aluno_professor(fk_professor,fk_aluno)
 values(1,1);
-insert into aluno(fk_professor,fk_aluno)
-values(2,3);
-insert into aluno(fk_professor,fk_aluno)
-values(3,2);
+insert into aluno_professor(fk_professor,fk_aluno)
+values(2,2);
+insert into aluno_professor(fk_professor,fk_aluno)
+values(3,3);
 
 insert into turma_aluno(fk_turma,fk_aluno)
 values(1,1);
