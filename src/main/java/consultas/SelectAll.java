@@ -1,43 +1,17 @@
+package consultas;
+
 import entidades.*;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
-public class Models {
-    public static Connection fazerConexao() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String servidor = "jdbc:mysql://sql10.freemysqlhosting.net:3306/sql10502351";
-            String usuario = "sql10502351";
-            String senha = "273r7UMB9k";
-            Connection con = DriverManager.getConnection(//abre a conexao
-                    servidor,
-                    usuario,
-                    senha
-            );
-            return con;
-        } catch (Exception e) {
-            System.out.println(e);
-            return null;
-        }
-    }
-    //exemplo INSERT no banco
-//    public static void customQuery(String query){
-//        try {
-//            Connection con = fazerConexao();
-//            PreparedStatement psmt;
-//            psmt = con.prepareStatement(query);
-//            psmt.execute();
-//            psmt.close();
-//            System.out.println("Query feita!!!!");
-//        }
-//        catch (Exception e) {
-//            System.out.println(e);
-//        }
-//    }
+public class SelectAll {
+    static Conexao conexao = new Conexao();
 
     public static Endereco[] selectAllEndereco(){
         try {
-            Connection con = fazerConexao();
+            Connection con = conexao.fazerConexao();
             Statement stmt = con.createStatement();
 
             //cria uma lista do tipo Endereco com o tamanho igual a o tanto de dado do banco
@@ -79,7 +53,7 @@ public class Models {
     }
     public static Aluno[] selectAllAluno(){
         try {
-            Connection con = fazerConexao();
+            Connection con = conexao.fazerConexao();
             Statement stmt = con.createStatement();
 
             ResultSet linhas = stmt.executeQuery("select count(*) from aluno");
@@ -117,7 +91,7 @@ public class Models {
     }
     public static Professor[] selectAllProfessor(){
         try {
-            Connection con = fazerConexao();
+            Connection con = conexao.fazerConexao();
             Statement stmt = con.createStatement();
 
             ResultSet linhas = stmt.executeQuery("select count(*) from aluno");
@@ -153,7 +127,7 @@ public class Models {
     }
     public static Disciplina[] selectAllDisciplina(){
         try {
-            Connection con = fazerConexao();
+            Connection con = conexao.fazerConexao();
             Statement stmt = con.createStatement();
 
             ResultSet linhas = stmt.executeQuery("select count(*) from disciplina");
@@ -187,7 +161,7 @@ public class Models {
     }
     public static Turma[] selectAllTurma(){
         try {
-            Connection con = fazerConexao();
+            Connection con = conexao.fazerConexao();
             Statement stmt = con.createStatement();
 
             ResultSet linhas = stmt.executeQuery("select count(*) from disciplina");
@@ -221,7 +195,7 @@ public class Models {
     }
     public static Curso[] selectAllCurso(){
         try {
-            Connection con = fazerConexao();
+            Connection con = conexao.fazerConexao();
             Statement stmt = con.createStatement();
 
             ResultSet linhas = stmt.executeQuery("select count(*) from disciplina");
