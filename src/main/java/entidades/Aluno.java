@@ -2,6 +2,7 @@ package entidades;
 
 public class Aluno extends Endereco implements IPessoa {
     int id;
+    String fkCurso;
     String matricula;
     String nome;
     String telefone;
@@ -23,6 +24,10 @@ public class Aluno extends Endereco implements IPessoa {
     @Override
     public void setTelefone(String telefone){
         this.telefone = telefone;
+    }
+
+    public void setFkCurso(String fkCurso) {
+        this.fkCurso = fkCurso;
     }
 
     public void setDataNas(String data){
@@ -61,4 +66,8 @@ public class Aluno extends Endereco implements IPessoa {
     }
 
     public String getMatricula(){return matricula;}
+
+    public String getFkCurso() {
+        return fkCurso;
+    }
 }

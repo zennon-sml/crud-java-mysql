@@ -1,12 +1,18 @@
 package entidades;
 
 public class Disciplina {
+    int idDis;
     int codigo;
     String descricao;
     String cargaHoraria;
     int numeroCreditos;
 
     //---------------------------------------------> sets
+
+
+    public void setIdDis(int idDis) {
+        this.idDis = idDis;
+    }
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
@@ -25,6 +31,11 @@ public class Disciplina {
     }
 
     //---------------------------------------------------> gets
+
+
+    public int getIdDis() {
+        return idDis;
+    }
 
     public int getCodigo() {
         return codigo;
