@@ -82,6 +82,7 @@ public class SelectAll {
                 alunos[i] = a;
                 i++;
             }
+            rs.close();
             return alunos;
         }
         catch (Exception e) {
@@ -94,7 +95,7 @@ public class SelectAll {
             Connection con = conexao.fazerConexao();
             Statement stmt = con.createStatement();
 
-            ResultSet linhas = stmt.executeQuery("select count(*) from aluno");
+            ResultSet linhas = stmt.executeQuery("select count(*) from professor");
             linhas.next();
             Professor[] professores = new Professor[linhas.getInt(1)];//lista de todos os enderecos
             int i = 0;

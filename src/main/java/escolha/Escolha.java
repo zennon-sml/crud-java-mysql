@@ -11,13 +11,14 @@ public class Escolha {
         CRUDAluno al = new CRUDAluno();
 
         System.out.println("Escolheu aluno");
-        System.out.print("1-Novo Aluno\n2-Carregar Aluno\n3-Update Aluno\n4-Delete Aluno\nR: ");
+        System.out.print("1-Novo Aluno\n2-Carregar Aluno\n3-Update Aluno\n4-Delete Aluno\n5-Mostrar todos Os Alunos\nR: ");
         int escolha = input.nextInt();
 
         if (escolha == 1){al.createAluno();}
         else if (escolha == 2) {al.readAluno();}
         else if (escolha == 3) {al.updateAluno();}
         else if (escolha == 4) {al.deleteAluno();}
+        else if (escolha == 5) {al.printAllAluno();}
     }
     public void professor(){
         CRUDProfessor pr = new CRUDProfessor();
