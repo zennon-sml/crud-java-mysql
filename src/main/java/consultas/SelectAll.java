@@ -104,7 +104,7 @@ public class SelectAll {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()){
                 int id = rs.getInt(1);
-                int registro = rs.getInt(2);
+                String registro = rs.getString(2);
                 String nome = rs.getString(3);
                 String telefone = rs.getString(4);
                 String especialidade = rs.getString(5);
@@ -199,7 +199,7 @@ public class SelectAll {
             Connection con = conexao.fazerConexao();
             Statement stmt = con.createStatement();
 
-            ResultSet linhas = stmt.executeQuery("select count(*) from disciplina");
+            ResultSet linhas = stmt.executeQuery("select count(*) from curso");
             linhas.next();
             Curso[] cursos = new Curso[linhas.getInt(1)];//lista de todos os enderecos
             int i = 0;
@@ -212,16 +212,12 @@ public class SelectAll {
                 String nome = rs.getString(3);
                 String descricao = rs.getString(4);
                 int num_periodo = rs.getInt(5);
-                int fk_aluno = rs.getInt(6);
-                int fk_disciplina = rs.getInt(7);
                 Curso c = new Curso();
-                //TODO c.setId(id);
+                c.setIdCurso(id);
                 c.setCodigo(codigo);
                 c.setNome(nome);
                 c.setDescricao(descricao);
                 c.setNumeroPeriodos(num_periodo);
-                //TODO c.getFKaluno(fk_aluno);
-                //TODO c.getFKdisciplina(fk_disciplina);
                 cursos[i] = c;
                 i++;
             }

@@ -1,7 +1,7 @@
 package entidades;
 
 public class Curso {
-    int idEnd;
+    int idCurso;
     int codigo;
     String nome;
     String descricao;
@@ -10,8 +10,8 @@ public class Curso {
     //-------------------------------------------> sets
 
 
-    public void setIdEnd(int idEnd) {
-        this.idEnd = idEnd;
+    public void setIdCurso(int idCurso) {
+        this.idCurso = idCurso;
     }
 
     public void setCodigo(int codigo) {
@@ -33,8 +33,8 @@ public class Curso {
     //---------------------------------------------> gets
 
 
-    public int getIdEnd() {
-        return idEnd;
+    public int getIdCurso() {
+        return idCurso;
     }
 
     public int getCodigo() {

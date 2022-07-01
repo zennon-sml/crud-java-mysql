@@ -4,13 +4,19 @@ import consultas.InsertInto;
 import consultas.SelectAll;
 import consultas.SelectById;
 import entidades.Aluno;
+import entidades.Curso;
 import printar.PrintAll;
 
 import java.util.Scanner;
 public class CRUDAluno {
     Aluno aluno = new Aluno();
     Scanner input = new Scanner(System.in);
+    Scanner inputInt = new Scanner(System.in);
     public void createAluno(){
+        //printar todos os cursos para a escolha de cadastrar a FK curso pro aluno
+        PrintAll.printEscholhaCurso(SelectAll.selectAllCurso());
+        int FKCurso = inputInt.nextInt();
+
         System.out.println("CREATE ALUNO");
         System.out.print("Nome: ");
         aluno.setNome(input.nextLine());
@@ -49,11 +55,11 @@ public class CRUDAluno {
                 "Numero: "+aluno.getNumero()+"\n"
         );
         //tentando mandar pro banco
-        InsertInto fazerAluno = new InsertInto();
-        fazerAluno.fazerAluno(aluno);
+        InsertInto.fazerAluno(aluno, FKCurso);
     }
     public void readAluno(){
-        System.out.println("pegar por id");
+        qual
+        SelectById.selectAluno()
     }
     public void updateAluno(){
         System.out.println("updateAluno");
@@ -62,6 +68,7 @@ public class CRUDAluno {
         System.out.println("deleteAluno");
     }
     public void printAllAluno(){
+        //pegando todo mundo do banco
         PrintAll.printAllAluno( SelectAll.selectAllAluno());
     }
 }

@@ -11,7 +11,7 @@ public class CRUDProfessor {
         System.out.print("Nome: ");
         prof.setNome(input.nextLine());
         System.out.print("Registro: ");
-        prof.setRegistro(input.nextInt());
+        prof.setRegistro(input.nextLine());
         System.out.print("Especialidade: ");
         prof.setEspecialidade(input.nextLine());
         System.out.print("Telefone: ");

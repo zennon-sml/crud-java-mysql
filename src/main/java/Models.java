@@ -129,7 +129,7 @@ public class Models {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()){
                 int id = rs.getInt(1);
-                int registro = rs.getInt(2);
+                String registro = rs.getString(2);
                 String nome = rs.getString(3);
                 String telefone = rs.getString(4);
                 String especialidade = rs.getString(5);

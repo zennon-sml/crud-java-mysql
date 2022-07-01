@@ -81,7 +81,7 @@ public class SelectById {
             ResultSet rs = stmt.executeQuery(query);
             rs.next();
             int id = rs.getInt(1);
-            int registro = rs.getInt(2);
+            String registro = rs.getString(2);
             String nome = rs.getString(3);
             String telefone = rs.getString(4);
             String especialidade = rs.getString(5);
@@ -174,7 +174,7 @@ public class SelectById {
             int fk_aluno = rs.getInt(6);
             int fk_disciplina = rs.getInt(7);
             Curso c = new Curso();
-            //TODO c.setId(id);
+            c.setIdCurso(id);
             c.setCodigo(codigo);
             c.setNome(nome);
             c.setDescricao(descricao);
