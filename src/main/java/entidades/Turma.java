@@ -1,9 +1,11 @@
 package entidades;
 
 public class Turma {
+    int idTur;
     int codigo;
     String sala;
     String horario;
+    int FK_Professor_Disciplina;
 
     //--------------------------------> sets
 
@@ -18,9 +20,12 @@ public class Turma {
     public void setHorario(String horario) {
         this.horario = horario;
     }
+    public void setFK_Professor_Disciplina(int FKPD){FK_Professor_Disciplina = FKPD; }
+    public void setIdTur(int idTUr){this.idTur = idTUr; }
 
     //-------------------------------------------> gets
 
+    public  int getIdTur(){return idTur;}
     public int getCodigo() {
         return codigo;
     }
@@ -32,4 +37,5 @@ public class Turma {
     public String getHorario() {
         return horario;
     }
+    public int getFK_Professor_Disciplina(){return FK_Professor_Disciplina;}
 }

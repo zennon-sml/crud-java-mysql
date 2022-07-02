@@ -7,6 +7,7 @@ public class Professor extends Endereco implements IPessoa{
     String telefone;
     String especialidade;
     String maiorTitulacao;
+    int fkEndereco;
 
     //------------------------------------> sets
 
@@ -33,6 +34,7 @@ public class Professor extends Endereco implements IPessoa{
     public void setMaiorTitulacao(String maiorTitulacao){
         this.maiorTitulacao = maiorTitulacao;
     }
+    public void setFkEndereco(int fkEndereco) {this.fkEndereco = fkEndereco;}
 
     //-----------------------------------> gets
 
@@ -60,6 +62,7 @@ public class Professor extends Endereco implements IPessoa{
     }
 
     public String getRegistro(){return registro; }
+    public int getFkEndereco() {return fkEndereco;}
 }
 
 

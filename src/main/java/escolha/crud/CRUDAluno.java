@@ -6,12 +6,15 @@ import consultas.SelectById;
 import entidades.Aluno;
 import entidades.Curso;
 import printar.PrintAll;
+import printar.PrintById;
 
 import java.util.Scanner;
 public class CRUDAluno {
     Aluno aluno = new Aluno();
     Scanner input = new Scanner(System.in);
     Scanner inputInt = new Scanner(System.in);
+    PrintAll pa = new PrintAll();
+    PrintById pb = new PrintById();
     public void createAluno(){
         //printar todos os cursos para a escolha de cadastrar a FK curso pro aluno
         PrintAll.printEscholhaCurso(SelectAll.selectAllCurso());
@@ -58,8 +61,9 @@ public class CRUDAluno {
         InsertInto.fazerAluno(aluno, FKCurso);
     }
     public void readAluno(){
-        qual
-        SelectById.selectAluno()
+        System.out.println("Digite o ID do aluno que deseja ver:\nR: ");
+        int alunoid = inputInt.nextInt();
+        pb.printAluno(SelectById.selectAluno(alunoid));
     }
     public void updateAluno(){
         System.out.println("updateAluno");

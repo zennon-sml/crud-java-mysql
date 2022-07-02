@@ -70,7 +70,8 @@ public class SelectAll {
                 String telefone = rs.getString(4);
                 String nasc = rs.getString(5);
                 String sexo = rs.getString(6);
-                int fk_endereco = rs.getInt(7);
+                int fk_Endereco = rs.getInt(7);
+                int fk_Curso = rs.getInt(8);
                 Aluno a = new Aluno();
 
                 a.setId(id);
@@ -79,6 +80,8 @@ public class SelectAll {
                 a.setTelefone(telefone);
                 a.setDataNas(nasc);
                 a.setSexo(sexo);
+                a.setFkEndereco(fk_Endereco);
+                a.setFkCurso(fk_Curso);
                 alunos[i] = a;
                 i++;
             }
@@ -179,11 +182,11 @@ public class SelectAll {
                 String horario = rs.getString(4);
                 int fk_professor_disciplina = rs.getInt(5);
                 Turma t = new Turma();
-                //TODO t.setId(id);
+                t.setIdTur(id);
                 t.setCodigo(codigo);
                 t.setSala(sala);
                 t.setHorario(horario);
-                //TODO t.setFKprofessor(fk_professor_disciplina);
+                t.setFK_Professor_Disciplina(fk_professor_disciplina);
                 turmas[i] = t;
                 i++;
             }

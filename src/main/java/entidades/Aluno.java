@@ -2,12 +2,13 @@ package entidades;
 
 public class Aluno extends Endereco implements IPessoa {
     int id;
-    String fkCurso;
     String matricula;
     String nome;
     String telefone;
     String dataNas;
     String sexo;
+    int fkCurso;
+    int fkEndereco;
 
     //------------------------------------> sets
 
@@ -26,9 +27,10 @@ public class Aluno extends Endereco implements IPessoa {
         this.telefone = telefone;
     }
 
-    public void setFkCurso(String fkCurso) {
+    public void setFkCurso(int fkCurso) {
         this.fkCurso = fkCurso;
     }
+    public void setFkEndereco(int fkEndereco) {this.fkEndereco = fkEndereco;}
 
     public void setDataNas(String data){
         this.dataNas = data;
@@ -67,7 +69,8 @@ public class Aluno extends Endereco implements IPessoa {
 
     public String getMatricula(){return matricula;}
 
-    public String getFkCurso() {
+    public int getFkCurso() {
         return fkCurso;
     }
+    public int getFkEndereco() {return fkEndereco;}
 }

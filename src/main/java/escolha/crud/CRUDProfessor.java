@@ -1,11 +1,18 @@
 package escolha.crud;
 
+import consultas.SelectAll;
+import consultas.SelectById;
 import entidades.Professor;
+import printar.PrintAll;
+import printar.PrintById;
+
 import java.util.Scanner;
 
 public class CRUDProfessor {
     Professor prof = new Professor();
     Scanner input = new Scanner(System.in);
+    Scanner inputInt = new Scanner(System.in);
+    PrintById pb = new PrintById();
     public void createProfessor(){
         System.out.println("CREATE PROFESSOR");
         System.out.print("Nome: ");
@@ -37,13 +44,18 @@ public class CRUDProfessor {
         System.out.printf("%s - %s - %s",prof.getNome(), prof.getRua(), prof.getEspecialidade());
     }
     public void readProfessor(){
-        System.out.println("ReadProfessor");
+        System.out.println("Digite o ID do Professor que deseja ver:\nR: ");
+        int professorid = inputInt.nextInt();
+        pb.printProfessor(SelectById.selectProfessor(professorid));
     }
     public void updateProfessor(){
         System.out.println("updateProfessor");
     }
     public void deleteProfessor(){
         System.out.println("deleteProfessor");
+    }
+    public void printAllProfessor(){
+        PrintAll.printAllProfessor(SelectAll.selectAllProfessor());
     }
 }
 

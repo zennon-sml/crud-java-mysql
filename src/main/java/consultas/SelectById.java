@@ -55,6 +55,7 @@ public class SelectById {
             String nasc = rs.getString(5);
             String sexo = rs.getString(6);
             int fk_endereco = rs.getInt(7);
+            int fk_curso = rs.getInt(8);
             Aluno a = new Aluno();
             //Instaciando objeto com os dados pegos
             a.setId(id);
@@ -63,6 +64,7 @@ public class SelectById {
             a.setTelefone(telefone);
             a.setDataNas(nasc);
             a.setSexo(sexo);
+            a.setFkCurso(fk_curso);
 
             return a;
         }
@@ -93,6 +95,8 @@ public class SelectById {
             p.setNome(nome);
             p.setTelefone(telefone);
             p.setMaiorTitulacao(titulacao);
+            p.setFkEndereco(fk_endereco);
+            p.setEspecialidade(especialidade);
 
             return p;
         }
@@ -116,7 +120,7 @@ public class SelectById {
             String carga_horaria = rs.getString(4);
             int num_credito = rs.getInt(5);
             Disciplina d = new Disciplina();
-            //TODO d.setId(id);
+            d.setIdDis(id);
             d.setCodigo(codigo);
             d.setDescricao(descricao);
             d.setCargaHoraria(carga_horaria);
@@ -144,11 +148,11 @@ public class SelectById {
             String horario = rs.getString(4);
             int fk_professor_disciplina = rs.getInt(5);
             Turma t = new Turma();
-            //TODO t.setId(id);
+            t.setIdTur(id);
             t.setCodigo(codigo);
             t.setSala(sala);
             t.setHorario(horario);
-            //TODO t.setFKprofessor(fk_professor_disciplina);
+            t.setFK_Professor_Disciplina(fk_professor_disciplina);
 
             return t;
         }
@@ -171,16 +175,12 @@ public class SelectById {
             String nome = rs.getString(3);
             String descricao = rs.getString(4);
             int num_periodo = rs.getInt(5);
-            int fk_aluno = rs.getInt(6);
-            int fk_disciplina = rs.getInt(7);
             Curso c = new Curso();
             c.setIdCurso(id);
             c.setCodigo(codigo);
             c.setNome(nome);
             c.setDescricao(descricao);
             c.setNumeroPeriodos(num_periodo);
-            //TODO c.getFKaluno(fk_aluno);
-            //TODO c.getFKdisciplina(fk_disciplina);
 
             return c;
         }
