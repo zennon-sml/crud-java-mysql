@@ -2,6 +2,7 @@ package escolha;
 
 import entidades.Aluno;
 import escolha.crud.*;
+import escolha.pesquisa.*;
 import excecoes.NumeroNaoListado;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ public class Escolha {
     public void menu(){
         Scanner input = new Scanner(System.in);
         System.out.println("--------------------------\nMENU\n");
-        System.out.print("1 - CRUDS\n2 - Consultas\n9 - Sair\nR: ");
+        System.out.print("1 - CRUD's\n2 - Consultas\n9 - Sair\nR: ");
         int resposta = input.nextInt();
 
         try {
@@ -34,16 +35,67 @@ public class Escolha {
         System.out.print("1 - Aluno\n2 - Professor\n3 - Disciplina\n4 - Curso\n5 - Turma\n9 - Voltar\nR: ");
         int resposta = input.nextInt();
 
-
-        if (resposta == 1){aluno();}
-        else if (resposta == 2) {professor();}
-        else if (resposta == 3) {disciplina();}
-        else if (resposta == 4) {curso();}
-        else if (resposta == 5) {turma();}
-        else if (resposta == 9) {
-            System.out.println("Voltando...");
-            menu();
+        try {
+            if (resposta == 1){pAluno();}
+            else if (resposta == 2) {pProfessor();}
+            else if (resposta == 3) {pDisciplina();}
+            else if (resposta == 4) {pCurso();}
+            else if (resposta == 5) {pTurma();}
+            else if (resposta == 9) {
+                System.out.println("Voltando...");
+                menu();
+            }else {throw new NumeroNaoListado(resposta);}
+        }catch (NumeroNaoListado e){
+            e.printStackTrace();
+            System.out.println("Escolha uma das opções disponiveis!!");
+            menuEscolha();
         }
+    }
+
+    public void pAluno(){
+        PesqAluno pa = new PesqAluno();
+        System.out.println("--------------------------\nCONSULTA ALUNO\n");
+        System.out.println("Carregando...");
+
+        pa.printAll();
+        pa.infos();
+        voltarPesquisa();
+    }
+    public void pProfessor(){
+        PesqProfessor pp = new PesqProfessor();
+        System.out.println("--------------------------\nCONSULTA PROFESSOR\n");
+        System.out.println("Carregando...");
+
+        pp.printAll();
+        pp.infos();
+        voltarPesquisa();
+    }
+    public void pDisciplina(){
+        PesqDisciplina pd = new PesqDisciplina();
+        System.out.println("--------------------------\nCONSULTA DISCIPLINA\n");
+        System.out.println("Carregando...");
+
+        pd.printAll();
+        pd.infos();
+        voltarPesquisa();
+    }
+    public void pCurso(){
+        PesqCurso pc = new PesqCurso();
+        System.out.println("--------------------------\nCONSULTA CURSO\n");
+        System.out.println("Carregando...");
+
+        pc.printAll();
+        pc.infos();
+        voltarPesquisa();
+    }
+    public void pTurma(){
+        PesqTurma pt = new PesqTurma();
+        System.out.println("--------------------------\nCONSULTA TURMA\n");
+        System.out.println("Carregando...");
+
+        pt.printAll();
+        pt.infos();
+        voltarPesquisa();
     }
 
     public void menuCRUD(){
@@ -51,15 +103,25 @@ public class Escolha {
         System.out.print("1 - Aluno\n2 - Professor\n3 - Disciplina\n4 - Curso\n5 - Turma\n9 - Voltar\nR: ");
         int resposta = input.nextInt();
 
-
-        if (resposta == 1){aluno();}
-        else if (resposta == 2) {professor();}
-        else if (resposta == 3) {disciplina();}
-        else if (resposta == 4) {curso();}
-        else if (resposta == 5) {turma();}
-        else if (resposta == 9) {
-            System.out.println("Voltando...");
-            menu();
+        try {
+            if (resposta == 1) {
+                aluno();
+            } else if (resposta == 2) {
+                professor();
+            } else if (resposta == 3) {
+                disciplina();
+            } else if (resposta == 4) {
+                curso();
+            } else if (resposta == 5) {
+                turma();
+            } else if (resposta == 9) {
+                System.out.println("Voltando...");
+                menu();
+            }else {throw new NumeroNaoListado(resposta);}
+        }catch (NumeroNaoListado e){
+            e.printStackTrace();
+            System.out.println("Escolha uma das opções disponiveis!!");
+            menuCRUD();
         }
     }
     public void aluno(){
@@ -170,5 +232,21 @@ public class Escolha {
             turma();
         }
 
+    }
+    public void voltarPesquisa(){
+        do {
+            System.out.print("9 - Voltar\nR: ");
+            int escolha = input.nextInt();
+            try {
+                if (escolha == 9) {
+                    menuEscolha();
+                } else {
+                    throw new NumeroNaoListado(escolha);
+                }
+            } catch (NumeroNaoListado e) {
+                e.getMessage();
+                System.out.println("Escolha uma das opções disponiveis!!");
+            }
+        }while (true);
     }
 }

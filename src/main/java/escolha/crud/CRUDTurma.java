@@ -79,6 +79,7 @@ public class CRUDTurma implements ICRUD{
     @Override
     public void printAll(){
         System.out.println("--------------------------\nEXIBIR TODAS AS TURMAS\n");
+        System.out.println("Carregando...");
         PrintAll.printAllTurma(SelectAll.selectAllTurma());
 
         voltar();

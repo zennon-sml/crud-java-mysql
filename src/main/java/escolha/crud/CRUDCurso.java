@@ -63,6 +63,7 @@ public class CRUDCurso implements ICRUD{
     @Override
     public void printAll() {
         System.out.println("--------------------------\nEXIBIR TODOS OS CURSOS\n");
+        System.out.println("Carregando...");
         PrintAll.printAllCurso(SelectAll.selectAllCurso());
         voltar();
     }

@@ -72,6 +72,7 @@ public class CRUDDisciplina implements ICRUD{
     @Override
     public void printAll(){
         System.out.println("--------------------------\nEXIBIR TODAS AS DISCIPLINAS\n");
+        System.out.println("Carregando...");
         PrintAll.printAllDisciplina(SelectAll.selectAllDisciplina());
         voltar();
     }

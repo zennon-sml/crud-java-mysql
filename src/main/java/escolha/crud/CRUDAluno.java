@@ -26,9 +26,9 @@ public class CRUDAluno implements ICRUD {
         //printar todos os cursos para a escolha de cadastrar a FK curso pro aluno
         System.out.println("--------------------------\nNOVO ALUNO\n");
 
-        System.out.print("Escolha o ID do Curso do aluno: ");
+        System.out.println("Carregando...");
         PrintAll.printAllCurso(SelectAll.selectAllCurso());
-        System.out.print("Curso ID: ");
+        System.out.print("Escolha o ID do Curso do aluno\nR: ");
         int fk_curso = inputInt.nextInt();
 
         System.out.print("R: ");
@@ -103,6 +103,7 @@ public class CRUDAluno implements ICRUD {
         System.out.println("--------------------------\nDELETAR ALUNO\n");
         System.out.print("Digite o ID do aluno que deseja apagar:\nR: ");
         int alunoid = inputInt.nextInt();
+
         try {
             pb.printAluno(SelectById.selectAluno(alunoid));
             dl.deleteAluno(alunoid);
@@ -117,6 +118,7 @@ public class CRUDAluno implements ICRUD {
     public void printAll(){
         //pegando todos mundo do banco
         System.out.println("--------------------------\nEXIBIR TODOS OS ALUNOS\n");
+        System.out.println("Carregando...");
         PrintAll.printAllAluno( SelectAll.selectAllAluno());
         voltar();
     }
