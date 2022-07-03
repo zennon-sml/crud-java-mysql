@@ -29,6 +29,7 @@ public class PrintAll {
     }
     public static void printAllTurma(Turma[] turmas){
         System.out.println("Printando todos os Turmas");
+        System.out.println("Carregando...");
         for(Turma t : turmas){
             System.out.println("#----------------------------------------------------#");
             System.out.println("#ID: "+t.getIdTur()+" | Codigo: "+t.getCodigo()+" | Horario: "+t.getHorario()+" | FK  professor_disciplina: "+t.getFK_Professor_Disciplina());
@@ -36,6 +37,7 @@ public class PrintAll {
         System.out.println("#----------------------------------------------------#");
     }
     public static void printAllCurso(Curso[] cursos){
+        //curso(codigo,nome,descricao,num_periodo)
         System.out.println("Printando todos os Cursos");
         for(Curso c : cursos){
             System.out.println("#----------------------------------------------------#");
@@ -44,9 +46,10 @@ public class PrintAll {
         System.out.println("#----------------------------------------------------#");
     }
     public static void printAllEndereco(Endereco[] enderecos){
+        //endereco (rua,numero,cidade,cep,estado)
         for(Endereco e : enderecos){
             System.out.println("#----------------------------------------------------#");
-            System.out.println("#ID: "+e.getIdEnd()+" | Rua: "+e.getRua()+" | Cidade: "+e.getCidade());
+            System.out.println("#ID: "+e.getIdEnd()+" | Rua: "+e.getRua()+" | Cidade: "+e.getCidade()+" | Estado: "+e.getEstado());
         }
         System.out.println("#----------------------------------------------------#");
     }

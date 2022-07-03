@@ -1,7 +1,6 @@
 package consultas;
 
-import entidades.Aluno;
-import entidades.Professor;
+import entidades.*;
 import escolha.Escolha;
 
 import java.sql.Connection;
@@ -25,12 +24,8 @@ public class Update {
             sta.setString(4, a.getDataNas());
             sta.setString(5, a.getSexo());
 
-            int rowsUpdated = sta.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println("Aluno Atualizado com sucesso");
-            }else{
-                System.out.println("Nenhum dado modificado");
-            }
+            sta.executeUpdate();
+            System.out.println("Aluno Atualizado com sucesso");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -47,12 +42,59 @@ public class Update {
             sta.setString(4, p.getEspecialidade());
             sta.setString(5, p.getMaiorTitulacao());
 
-            int rowsUpdated = sta.executeUpdate();
-            if (rowsUpdated > 0) {
-                System.out.println("Professor Atualizado com sucesso");
-            }else{
-                System.out.println("Nenhum dado modificado");
-            }
+            sta.executeUpdate();
+            System.out.println("Professor Atualizado com sucesso");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    public static void updateDisciplina(Disciplina d, int disId){
+        try {
+            Connection con = conexao.fazerConexao();
+            //disciplina(codigo,descricao,carga_horaria,num_credito)
+            String query = "UPDATE disciplina SET codigo=?,descricao=?,carga_horaria=?,num_credito=? where id = "+disId;
+            PreparedStatement sta = con.prepareStatement(query);
+            sta.setInt(1,d.getCodigo());
+            sta.setString(2,d.getDescricao());
+            sta.setString(3, d.getCargaHoraria());
+            sta.setInt(4, d.getNumeroCreditos());
+
+            sta.executeUpdate();
+            System.out.println("Professor Atualizado com sucesso");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    public static void updateTurma(Turma t, int idTurma){
+        try {
+            Connection con = conexao.fazerConexao();
+            //turma(codigo,sala,horario,fk_professor_disciplina)
+            String query = "UPDATE turma SET codigo=?,sala=?,horario=?,fk_professor_disciplina=? where id = "+idTurma;
+            PreparedStatement sta = con.prepareStatement(query);
+            sta.setInt(1,t.getCodigo());
+            sta.setString(2,t.getSala());
+            sta.setString(3, t.getHorario());
+            sta.setInt(4, t.getFK_Professor_Disciplina());
+
+            sta.executeUpdate();
+            System.out.println("Turma Atualizado com sucesso");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    public static void updateCurso(Curso c, int idCurso){
+        try {
+            Connection con = conexao.fazerConexao();
+            //curso(codigo,nome,descricao,num_periodo)
+            String query = "UPDATE curso SET codigo=?,nome=?,descricao=?,num_periodo=? where id = "+idCurso;
+            PreparedStatement sta = con.prepareStatement(query);
+            sta.setInt(1,c.getCodigo());
+            sta.setString(2,c.getNome());
+            sta.setString(3, c.getDescricao());
+            sta.setInt(4, c.getNumeroPeriodos());
+
+            sta.executeUpdate();
+            System.out.println("Curso Atualizado com sucesso");
         } catch (Exception e) {
             System.out.println(e);
         }

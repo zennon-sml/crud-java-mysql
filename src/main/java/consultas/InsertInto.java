@@ -144,6 +144,38 @@ public class InsertInto {
             System.out.println(e);
         }
     }
+    public static void fazerProfAlu(int fk_prof, int fk_alu){
+        try {
+            Connection con = conexao.fazerConexao();
+
+            String prof_alu = "insert into aluno_professor(fk_aluno,fk_professor) values (?,?)";
+            PreparedStatement pdst = con.prepareStatement(prof_alu);
+            pdst.setInt(1, fk_alu);
+            pdst.setInt(2, fk_prof);
+            pdst.execute();
+            pdst.close();
+            voltar(2);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+    }
+    public static void fazerAluTur(int fk_tur,int fk_alu){
+        try {
+            Connection con = conexao.fazerConexao();
+            //turma_aluno(fk_turma,fk_aluno)
+            String tur_alu = "insert into  turma_aluno(fk_turma,fk_aluno) values (?,?)";
+            PreparedStatement pdst = con.prepareStatement(tur_alu);
+            pdst.setInt(1, fk_alu);
+            pdst.setInt(2, fk_tur);
+            pdst.execute();
+            pdst.close();
+            System.out.println("Ligação turma aluno criada");
+            voltar(5);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
     public static void voltar(int entidade){
         do {
             System.out.print("9 - Voltar\nR: ");

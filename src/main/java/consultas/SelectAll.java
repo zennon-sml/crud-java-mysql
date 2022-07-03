@@ -117,6 +117,8 @@ public class SelectAll {
                 p.setRegistro(registro);
                 p.setNome(nome);
                 p.setTelefone(telefone);
+                p.setEspecialidade(especialidade);
+                p.setFkEndereco(fk_endereco);
                 p.setMaiorTitulacao(titulacao);
                 professores[i] = p;
                 i++;

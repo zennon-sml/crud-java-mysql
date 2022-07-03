@@ -1,9 +1,6 @@
 package escolha.crud;
 
-import consultas.Delete;
-import consultas.InsertInto;
-import consultas.SelectAll;
-import consultas.SelectById;
+import consultas.*;
 import entidades.Aluno;
 import entidades.Curso;
 import escolha.Escolha;
@@ -95,6 +92,25 @@ public class CRUDAluno implements ICRUD {
     @Override
     public void update(){
         System.out.println("--------------------------\nATUALIZAR ALUNO\n");
+        System.out.print("Digite o ID do Aluno que deseja atualizar:\nR: ");
+        System.out.println("Carregando...");
+        PrintAll.printAllAluno(SelectAll.selectAllAluno());
+        System.out.print("R: ");
+        int alunoId = inputInt.nextInt();
+        Aluno alunovei = SelectById.selectAluno(alunoId);
+        Aluno aluno = new Aluno();
+        System.out.print("Nome: ");
+        aluno.setNome(input.nextLine());
+        System.out.print("Matricula: ");
+        aluno.setMatricula(input.nextLine());
+        System.out.print("Data de Nascimento: ");
+        aluno.setDataNas(input.nextLine());
+        System.out.print("Telefone: ");
+        aluno.setTelefone(input.nextLine());
+        System.out.print("Sexo: ");
+        aluno.setSexo(input.nextLine());
+
+        Update.updateAluno(aluno, alunoId);
         voltar();
     }
 
@@ -102,15 +118,11 @@ public class CRUDAluno implements ICRUD {
     public void delete(){
         System.out.println("--------------------------\nDELETAR ALUNO\n");
         System.out.print("Digite o ID do aluno que deseja apagar:\nR: ");
+        System.out.println("Carregando...");
+        PrintAll.printAllAluno(SelectAll.selectAllAluno());
         int alunoid = inputInt.nextInt();
 
-        try {
-            pb.printAluno(SelectById.selectAluno(alunoid));
-            dl.deleteAluno(alunoid);
-        }catch (NullPointerException e){
-            System.out.println("ID não encontrado, tente outro!!");
-            read();
-        }
+        dl.deleteAluno(alunoid);
         voltar();
     }
 

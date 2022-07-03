@@ -149,7 +149,7 @@ public class Escolha {
         CRUDProfessor pr = new CRUDProfessor();
 
         System.out.println("--------------------------\nCRUD PROFESSOR\n");
-        System.out.print("1 - Novo Professor\n2 - Carregar Professor\n3 - Update Professor\n4 - Delete Professor\n5 - Mostrar todos Os Professores\n9 - Voltar\nR: ");
+        System.out.print("1 - Novo Professor\n2 - Carregar Professor\n3 - Update Professor\n4 - Delete Professor\n5 - Mostrar todos Os Professores\n6 - Criar Orientação\n9 - Voltar\nR: ");
         int escolha = input.nextInt();
 
         try{
@@ -158,6 +158,7 @@ public class Escolha {
             else if (escolha == 3) {pr.update();}
             else if (escolha == 4) {pr.delete();}
             else if (escolha == 5) {pr.printAll();}
+            else if(escolha == 6){pr.orientacao();}
             else if (escolha == 9) {menuCRUD();}
             else {throw new NumeroNaoListado(escolha);}
         }catch (NumeroNaoListado e) {
@@ -214,7 +215,7 @@ public class Escolha {
         CRUDTurma tu = new CRUDTurma();
 
         System.out.println("--------------------------\nCRUD TURMA\n");
-        System.out.print("1 - Nova Turma\n2 - Carregar Turma\n3 - Update Turma\n4 - Delete Turma\n5 - Mostrar todos As Turmas\n9 - Voltar\nR: ");
+        System.out.print("1 - Nova Turma\n2 - Carregar Turma\n3 - Update Turma\n4 - Delete Turma\n5 - Mostrar todos As Turmas\n6 - Adicionar Aluno a turma\n9 - Voltar\nR: ");
         int escolha = input.nextInt();
 
         try{
@@ -223,6 +224,7 @@ public class Escolha {
             else if (escolha == 3) {tu.update();}
             else if (escolha == 4) {tu.delete();}
             else if (escolha == 5) {tu.printAll();}
+            else if (escolha == 6) {tu.aluTur();}
             else if (escolha == 9) {menuCRUD();}
             else {throw new NumeroNaoListado(escolha);}
 

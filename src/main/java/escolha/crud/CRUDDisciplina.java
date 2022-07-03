@@ -1,9 +1,6 @@
 package escolha.crud;
 
-import consultas.Delete;
-import consultas.InsertInto;
-import consultas.SelectAll;
-import consultas.SelectById;
+import consultas.*;
 import entidades.Disciplina;
 import escolha.Escolha;
 import excecoes.NumeroNaoListado;
@@ -53,7 +50,22 @@ public class CRUDDisciplina implements ICRUD{
     @Override
     public void update(){
         System.out.println("--------------------------\nATUALIZAR DISCIPLINA\n");
+        System.out.print("Digite o ID da Disciplina que deseja atualizar:\nR: ");
+        PrintAll.printAllDisciplina(SelectAll.selectAllDisciplina());
+        System.out.print("R: ");
+        int disId = inputInt.nextInt();
+        Disciplina velhaDis = SelectById.selectDisciplina(disId);
+        Disciplina dis = new Disciplina();
+        System.out.print("Codigo: ");
+        dis.setCodigo(inputInt.nextInt());
+        System.out.print("Descrição: ");
+        dis.setDescricao(input.nextLine());
+        System.out.print("Carga Horaria: ");
+        dis.setCargaHoraria(input.nextLine());
+        System.out.print("Numero de creditos: ");
+        dis.setNumeroCreditos(inputInt.nextInt());
 
+        Update.updateDisciplina(dis, disId);
         voltar();
     }
 

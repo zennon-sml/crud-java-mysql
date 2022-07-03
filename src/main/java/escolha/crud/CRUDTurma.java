@@ -1,9 +1,7 @@
 package escolha.crud;
 
-import consultas.Delete;
-import consultas.InsertInto;
-import consultas.SelectAll;
-import consultas.SelectById;
+import consultas.*;
+import entidades.Professor;
 import entidades.Turma;
 import escolha.Escolha;
 import excecoes.NumeroNaoListado;
@@ -59,7 +57,20 @@ public class CRUDTurma implements ICRUD{
     @Override
     public void update(){
         System.out.println("--------------------------\nATUALIZAR TURMA\n");
+        System.out.print("Digite o ID do Professor que deseja atualizar:\nR: ");
+        PrintAll.printAllTurma(SelectAll.selectAllTurma());
+        System.out.print("R: ");
+        int turmaID = inputInt.nextInt();
+        Turma turmaveia = SelectById.selectTurma(turmaID);
+        Turma turma = new Turma();
+        System.out.print("Codigo: ");
+        turma.setCodigo(inputInt.nextInt());
+        System.out.print("Sala: ");
+        turma.setSala(input.nextLine());
+        System.out.print("Horario: ");
+        turma.setHorario(input.nextLine());
 
+        Update.updateTurma(turma,turmaID);
         voltar();
     }
 
@@ -84,7 +95,17 @@ public class CRUDTurma implements ICRUD{
 
         voltar();
     }
+    public void aluTur(){
+        System.out.println("Digite o ID da Turma e aluno");
+        PrintAll.printAllTurma(SelectAll.selectAllTurma());
+        System.out.print("Turma ID: ");
+        int fk_turma = inputInt.nextInt();
+        PrintAll.printAllAluno(SelectAll.selectAllAluno());
+        System.out.print("Aluno ID: ");
+        int fk_aluno = inputInt.nextInt();
 
+        InsertInto.fazerAluTur(fk_aluno,fk_turma);
+    }
     @Override
     public void voltar() {
         do {

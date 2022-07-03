@@ -13,10 +13,9 @@ import java.util.Scanner;
 public class CRUDProfessor implements ICRUD{
     Professor prof = new Professor();
     Scanner input = new Scanner(System.in);
-    Scanner inputInt = new Scanner(System.in);
+    static Scanner inputInt = new Scanner(System.in);
     PrintById pb = new PrintById();
     Escolha esc = new Escolha();
-
     Delete dl = new Delete();
 
     @Override
@@ -106,7 +105,16 @@ public class CRUDProfessor implements ICRUD{
         PrintAll.printAllProfessor(SelectAll.selectAllProfessor());
         voltar();
     }
-
+    public void orientacao(){
+        System.out.println("Digite o ID do professor e aluno");
+        PrintAll.printAllProfessor(SelectAll.selectAllProfessor());
+        System.out.println("Professor ID: ");
+        int fk_professor = inputInt.nextInt();
+        PrintAll.printAllAluno(SelectAll.selectAllAluno());
+        System.out.println("Aluno ID: ");
+        int fk_aluno = inputInt.nextInt();
+        InsertInto.fazerProfAlu(fk_professor,fk_aluno);
+    }
     @Override
     public void voltar(){
         do {

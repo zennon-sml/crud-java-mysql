@@ -65,6 +65,7 @@ public class SelectById {
             a.setTelefone(telefone);
             a.setDataNas(nasc);
             a.setSexo(sexo);
+            a.setFkEndereco(fk_endereco);
             a.setFkCurso(fk_curso);
             a.setFkEndereco(fk_endereco);
 
