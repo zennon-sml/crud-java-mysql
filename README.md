@@ -1,18 +1,22 @@
-Trabalho conjunto de banco de dados I e programação orientada a objeto I
+<h1 align="center">Faculdade</h1>
 
-Professora:Bonny Katy
+<p align="center">Trabalho conjunto de BD I & POO I</p>
 
-Resumo: fazer um sistema administrativo para uma faculdade usando java e mysql.
+-  **Professora:** Bonny Katty
 
-!!!!Documentação:https://docs.google.com/document/d/1nttEb6SpSEElt89yA9eLjDXuX4N2D2rQxtZH749GG4E/edit?usp=sharing
+- **Resumo:** fazer um sistema administrativo para uma faculdade usando java e mysql.
 
-Especificações:
-  usando maven,
-  mysql-connector-java-8.0.29,
-  JDK 18
+- [Documentação Do Banco De Dados](https://docs.google.com/document/d/1nttEb6SpSEElt89yA9eLjDXuX4N2D2rQxtZH749GG4E/edit?usp=sharing)
 
-![2022-06-29_14-13](https://user-images.githubusercontent.com/76619871/176496759-c90dcfb6-d50d-437c-b989-a1abb26d700b.png)
+### Recursos:
+
+- [x] CRUD das entidades: Aluno, Professor, Disciplina, Curso, Turma.
+
+- [x] Funçôes de consulta: SelectAll, SelectById, Delete, Update, InsertInto.
+
+- [x] Especificações: usando maven, mysql-connector-java-8.0.29, JDK 18
+
+### Video De Utilização:
 
 
 
-![image](https://user-images.githubusercontent.com/76619871/176273214-71e02098-a0ac-43ce-b711-93ba2c9e54db.png)
