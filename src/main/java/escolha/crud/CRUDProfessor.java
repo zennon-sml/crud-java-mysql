@@ -1,9 +1,7 @@
 package escolha.crud;
 
-import consultas.Delete;
-import consultas.InsertInto;
-import consultas.SelectAll;
-import consultas.SelectById;
+import consultas.*;
+import entidades.Aluno;
 import entidades.Professor;
 import escolha.Escolha;
 import excecoes.NumeroNaoListado;
@@ -61,7 +59,6 @@ public class CRUDProfessor implements ICRUD{
         System.out.println("--------------------------\nEXIBIR DADOS DO PROFESSOR\n");
         System.out.print("Digite o ID do Professor que deseja ver:\nR: ");
         int professorid = inputInt.nextInt();
-        System.out.println("Carregando...");
         pb.printProfessor(SelectById.selectProfessor(professorid));
         voltar();
     }
@@ -69,16 +66,31 @@ public class CRUDProfessor implements ICRUD{
     @Override
     public void update(){
         System.out.println("--------------------------\nATUALIZAR PROFESSOR\n");
-        System.out.println("Carregando...");
+        System.out.print("Digite o ID do Professor que deseja atualizar:\nR: ");
+        PrintAll.printAllProfessor(SelectAll.selectAllProfessor());
+        System.out.print("R: ");
+        int profId = inputInt.nextInt();
+        Professor professor = SelectById.selectProfessor(profId);
+        Professor prof = new Professor();
+        System.out.print("Nome: ");
+        prof.setNome(input.nextLine());
+        System.out.print("Int Registro: ");
+        prof.setRegistro(inputInt.nextInt());
+        System.out.print("Especialidade: ");
+        prof.setEspecialidade(input.nextLine());
+        System.out.print("Telefone: ");
+        prof.setTelefone(input.nextLine());
+        System.out.print("Maior Titulação: ");
+        prof.setMaiorTitulacao(input.nextLine());
 
-       voltar();
+        Update.updateProfessor(prof,profId);
+        voltar();
     }
 
     @Override
     public void delete(){
         System.out.println("--------------------------\nDELETAR PROFESSOR\n");
         System.out.print("Digite o ID do professor que deseja apagar:\n");
-        System.out.println("Carregando...");
         PrintAll.printAllProfessor(SelectAll.selectAllProfessor());
         System.out.print("R: ");
         int professorid = inputInt.nextInt();
@@ -90,7 +102,6 @@ public class CRUDProfessor implements ICRUD{
     @Override
     public void printAll(){
         System.out.println("--------------------------\nEXIBIR TODOS OS PROFESSORES\n");
-        System.out.println("Carregando...");
         PrintAll.printAllProfessor(SelectAll.selectAllProfessor());
         voltar();
     }

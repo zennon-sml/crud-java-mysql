@@ -1,5 +1,6 @@
 package escolha.crud;
 
+import consultas.Delete;
 import consultas.InsertInto;
 import consultas.SelectAll;
 import consultas.SelectById;
@@ -18,6 +19,8 @@ public class CRUDCurso implements ICRUD{
     Scanner inputInt = new Scanner(System.in);
     PrintById pb = new PrintById();
     Escolha esc = new Escolha();
+    Delete dl = new Delete();
+
 
     @Override
     public void create() {
@@ -56,7 +59,13 @@ public class CRUDCurso implements ICRUD{
     @Override
     public void delete(){
         System.out.println("--------------------------\nDELETAR CURSO\n");
+        System.out.print("Digite o ID do Curso que deseja apagar:\nR: ");
+        PrintAll.printAllCurso(SelectAll.selectAllCurso());
+        System.out.print("R: ");
+        int cursoid = inputInt.nextInt();
 
+        dl.deleteCurso(cursoid);
+        System.out.println("\n* Aluno cadastrado com sucesso!!");
         voltar();
     }
 
