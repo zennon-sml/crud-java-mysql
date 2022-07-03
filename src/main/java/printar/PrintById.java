@@ -38,7 +38,7 @@ public class PrintById {
 
 
     //-----------------------------------------------------------------------------------------> Consultas
-    public void printInfoAluno(Aluno a){
+    public void printInfo(Aluno a){
         Endereco e = SelectById.selectEndereco(a.getFkEndereco());
         Curso c = SelectById.selectCurso(a.getFkCurso());
 
@@ -61,4 +61,48 @@ public class PrintById {
 
         System.out.println("#----------------------------------------------------");
     }
+    public void printInfo(Professor p) {
+        Endereco e = SelectById.selectEndereco(p.getFkEndereco());
+        System.out.println("#ID: " + p.getId() + "\n" +
+                "Nome: " + p.getNome() + "\n" +
+                "Registro: " + p.getRegistro() + "\n" +
+                "Telefone: " + p.getTelefone() + "\n" +
+                "Especialidade: " + p.getEspecialidade() + "\n" +
+                "Maior titulação: " + p.getMaiorTitulacao() + "\n" +
+                "\n* INFORMAÇÕES DE ENDEREÇO *" + "\n" +
+                "CEP: " + e.getCep() + "\n" +
+                "Estado: " + e.getEstado() + "\n" +
+                "Cidade: " + e.getCidade() + "\n" +
+                "Rua: " + e.getRua() + "\n" +
+                "Complemento: " + e.getComplemento());
+
+    }
+    public void printInfo(Turma t){
+        System.out.println("#----------------------------------------------------");
+        System.out.println("#ID: " + t.getIdTur() + "\n" +
+                "Codigo: " + t.getCodigo() + "\n" +
+                "Sala: " + t.getSala() + "\n" +
+                "Horario: " + t.getHorario());
+        System.out.println("#----------------------------------------------------");
+
+    }
+    public void printInfo(Curso c) {
+        System.out.println("#----------------------------------------------------");
+        System.out.println("#ID: " + c.getIdCurso() + "\n" +
+                "Nome: " + c.getNome() + "\n" +
+                "Codigo: " + c.getCodigo() + "\n" +
+                "Descrição: " + c.getDescricao() + "\n" +
+                "Número de Periodos: " + c.getNumeroPeriodos());
+        System.out.println("#----------------------------------------------------");
+    }
+    public void printInfo(Disciplina d) {
+        System.out.println("#----------------------------------------------------");
+        System.out.println("#ID: " + d.getIdDis() + "\n" +
+                "Codigo: " + d.getCodigo() + "\n" +
+                "Carga Horaria: " + d.getCargaHoraria() + "\n" +
+                "Número de Creditos" + d.getNumeroCreditos()+ "\n" +
+                "Descrição: " + d.getDescricao());
+        System.out.println("#----------------------------------------------------");
+    }
+
 }
