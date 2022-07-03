@@ -3,18 +3,23 @@ package escolha.crud;
 import consultas.SelectAll;
 import consultas.SelectById;
 import entidades.Professor;
+import escolha.Escolha;
+import excecoes.NumeroNaoListado;
 import printar.PrintAll;
 import printar.PrintById;
 
 import java.util.Scanner;
 
-public class CRUDProfessor {
+public class CRUDProfessor implements ICRUD{
     Professor prof = new Professor();
     Scanner input = new Scanner(System.in);
     Scanner inputInt = new Scanner(System.in);
     PrintById pb = new PrintById();
-    public void createProfessor(){
-        System.out.println("CREATE PROFESSOR");
+    Escolha esc = new Escolha();
+
+    @Override
+    public void create(){
+        System.out.println("--------------------------\nNOVO PROFESSOR\n");
         System.out.print("Nome: ");
         prof.setNome(input.nextLine());
         System.out.print("Registro: ");
@@ -42,20 +47,59 @@ public class CRUDProfessor {
 
         //Manda pro banco agr
         System.out.printf("%s - %s - %s",prof.getNome(), prof.getRua(), prof.getEspecialidade());
+
+        System.out.println("\n* Professor cadastrado com sucesso!!");
+        voltar();
     }
-    public void readProfessor(){
-        System.out.println("Digite o ID do Professor que deseja ver:\nR: ");
+
+    @Override
+    public void read(){
+        System.out.println("--------------------------\nEXIBIR DADOS DO PROFESSOR\n");
+        System.out.print("Digite o ID do Professor que deseja ver:\nR: ");
         int professorid = inputInt.nextInt();
         pb.printProfessor(SelectById.selectProfessor(professorid));
+        voltar();
     }
-    public void updateProfessor(){
-        System.out.println("updateProfessor");
+
+    @Override
+    public void update(){
+        System.out.println("--------------------------\nATUALIZAR PROFESSOR\n");
+
+       voltar();
     }
-    public void deleteProfessor(){
-        System.out.println("deleteProfessor");
+
+    @Override
+    public void delete(){
+        System.out.println("--------------------------\nDELETAR PROFESSOR\n");
+
+        voltar();
     }
-    public void printAllProfessor(){
+
+    @Override
+    public void printAll(){
+        System.out.println("--------------------------\nEXIBIR TODOS OS PROFESSORES\n");
         PrintAll.printAllProfessor(SelectAll.selectAllProfessor());
+
+        voltar();
+    }
+
+    @Override
+    public void voltar(){
+        do {
+            System.out.print("9 - Voltar\nR: ");
+            int escol = input.nextInt();
+            try {
+                if (escol == 9) {
+                    esc.professor();
+                } else {
+                    throw new NumeroNaoListado(escol);
+                }
+            } catch (NumeroNaoListado e) {
+                e.getMessage();
+                System.out.println("Escolha uma das opções disponiveis!!");
+            }
+        }while (true);
     }
 }
+
 

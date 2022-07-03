@@ -1,18 +1,30 @@
 import escolha.Escolha;
+import excecoes.NumeroNaoListado;
 import java.util.Scanner;
 
 public class Faculdade {
     public static void main(String[] args){
 
         Scanner input = new Scanner(System.in);
-        System.out.print("1-Aluno\n2-Professor\n3-Disciplina\n4-Curso\n5-Turma\nR:");
+        System.out.println("--------------------------\nBEM VINDO(A) (:\n");
+        System.out.print("1 - Entrar\n2 - Sair\nR: ");
         int resposta = input.nextInt();
 
-        Escolha esc = new Escolha();
-        if (resposta == 1){esc.aluno();}
-        else if (resposta == 2) {esc.professor();}
-        else if (resposta == 3) {esc.disciplina();}
-        else if (resposta == 4) {esc.curso();}
-        else if (resposta == 5) {esc.turma();}
+        try {
+            if (resposta == 1) {
+                Escolha esc = new Escolha();
+                esc.menu();
+            }
+            else if (resposta == 2) {
+                System.out.println("Finalizando...");
+                return;
+            } else {throw new NumeroNaoListado(resposta);}
+
+        }catch (NumeroNaoListado e) {
+            e.printStackTrace();
+            System.out.println("Escolha uma das opções disponiveis!!");
+            main(args);
+        }
     }
 }
+

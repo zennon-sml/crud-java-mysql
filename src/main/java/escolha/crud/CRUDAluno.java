@@ -5,22 +5,28 @@ import consultas.SelectAll;
 import consultas.SelectById;
 import entidades.Aluno;
 import entidades.Curso;
+import escolha.Escolha;
+import excecoes.NumeroNaoListado;
 import printar.PrintAll;
 import printar.PrintById;
-
 import java.util.Scanner;
-public class CRUDAluno {
+
+public class CRUDAluno implements ICRUD {
     Aluno aluno = new Aluno();
     Scanner input = new Scanner(System.in);
     Scanner inputInt = new Scanner(System.in);
     PrintAll pa = new PrintAll();
     PrintById pb = new PrintById();
-    public void createAluno(){
+    Escolha esc = new Escolha();
+
+    @Override
+    public void create(){
         //printar todos os cursos para a escolha de cadastrar a FK curso pro aluno
+        System.out.println("--------------------------\nNOVO ALUNO\n");
         PrintAll.printEscholhaCurso(SelectAll.selectAllCurso());
+        System.out.print("R: ");
         int FKCurso = inputInt.nextInt();
 
-        System.out.println("CREATE ALUNO");
         System.out.print("Nome: ");
         aluno.setNome(input.nextLine());
         System.out.print("Matricula: ");
@@ -32,7 +38,7 @@ public class CRUDAluno {
         System.out.print("Sexo: ");
         aluno.setSexo(input.nextLine());
 
-        System.out.println("ENDEREÇO");
+        System.out.println("* ENDEREÇO");
         System.out.print("CEP: ");
         aluno.setCep(input.nextLine());
         System.out.print("Estado: ");
@@ -58,21 +64,63 @@ public class CRUDAluno {
                 "Numero: "+aluno.getNumero()+"\n"
         );
         //tentando mandar pro banco
+
         InsertInto.fazerAluno(aluno, FKCurso);
+        System.out.println("\n* Aluno cadastrado com sucesso!!");
+        voltar();
     }
-    public void readAluno(){
-        System.out.println("Digite o ID do aluno que deseja ver:\nR: ");
+
+    @Override
+    public void read(){
+        System.out.println("--------------------------\nEXIBIR DADOS DO ALUNO\n");
+        System.out.print("Digite o ID do aluno que deseja ver:\nR: ");
         int alunoid = inputInt.nextInt();
-        pb.printAluno(SelectById.selectAluno(alunoid));
+        try {
+            pb.printAluno(SelectById.selectAluno(alunoid));
+        }catch (NullPointerException e){
+            System.out.println("ID não encontrado, tente outro!!");
+            read();
+        }
+
+        voltar();
     }
-    public void updateAluno(){
-        System.out.println("updateAluno");
+
+    @Override
+    public void update(){
+        System.out.println("--------------------------\nATUALIZAR ALUNO\n");
+        voltar();
     }
-    public void deleteAluno(){
-        System.out.println("deleteAluno");
+
+    @Override
+    public void delete(){
+        System.out.println("--------------------------\nDELETAR ALUNO\n");
+        voltar();
     }
-    public void printAllAluno(){
-        //pegando todo mundo do banco
+
+    @Override
+    public void printAll(){
+        //pegando todos mundo do banco
+        System.out.println("--------------------------\nEXIBIR TODOS OS ALUNOS\n");
         PrintAll.printAllAluno( SelectAll.selectAllAluno());
+        voltar();
+    }
+
+
+    @Override
+    public void voltar(){
+        do {
+            System.out.print("9 - Voltar\nR: ");
+            int escolha = input.nextInt();
+            try {
+                if (escolha == 9) {
+                    esc.aluno();
+                } else {
+                    throw new NumeroNaoListado(escolha);
+                }
+            } catch (NumeroNaoListado e) {
+                e.getMessage();
+                System.out.println("Escolha uma das opções disponiveis!!");
+            }
+        }while (true);
     }
 }
