@@ -102,6 +102,7 @@ public class CRUDProfessor implements ICRUD{
     @Override
     public void printAll(){
         System.out.println("--------------------------\nEXIBIR TODOS OS PROFESSORES\n");
+        System.out.println("Carregando...");
         PrintAll.printAllProfessor(SelectAll.selectAllProfessor());
         voltar();
     }

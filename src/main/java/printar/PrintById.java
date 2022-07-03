@@ -1,8 +1,10 @@
 package printar;
 
+import consultas.SelectById;
 import entidades.*;
 
 public class PrintById {
+
     public void printAluno(Aluno a){
         System.out.println("#----------------------------------------------------#");
         System.out.println("#ID: "+a.getId()+" | Nome: "+a.getNome()+" | idEnd: "+a.getFkEndereco()+" | idCurso: "+a.getFkCurso());
@@ -32,5 +34,31 @@ public class PrintById {
         System.out.println("#----------------------------------------------------#");
         System.out.println("#ID: "+e.getIdEnd()+" | Rua: "+e.getRua()+" | Cidade: "+e.getCidade());
         System.out.println("#----------------------------------------------------#");
+    }
+
+
+    //-----------------------------------------------------------------------------------------> Consultas
+    public void printInfoAluno(Aluno a){
+        Endereco e = SelectById.selectEndereco(a.getFkEndereco());
+        Curso c = SelectById.selectCurso(a.getFkCurso());
+
+        System.out.println("#----------------------------------------------------");
+        System.out.println("#ID: "+a.getId()+"\n" +
+                "Nome: "+a.getNome()+"\n" +
+                "Matricula: " +a.getMatricula()+"\n" +
+                "Data de Nascimento: " +a.getDataNas()+"\n" +
+                "Sexo: " +a.getSexo()+"\n" +
+                "Telefone: " +a.getTelefone()+"\n" +
+                "\n* INFORMAÇÕES DE ENDEREÇO *" +"\n" +
+                "CEP: " +e.getCep()+"\n" +
+                "Estado: " +e.getEstado()+"\n" +
+                "Cidade: " +e.getCidade() +"\n" +
+                "Rua: "+ e.getRua()+"\n" +
+                "Complemento: " +e.getComplemento()+"\n" +
+                "\n* INFORMAÇÕES CURSO *" +"\n" +
+                "Nome do Curso: " +c.getNome()+"\n" +
+                "Numero de Periodos: " +c.getNumeroPeriodos());
+
+        System.out.println("#----------------------------------------------------");
     }
 }

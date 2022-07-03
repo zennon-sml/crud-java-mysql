@@ -32,6 +32,7 @@ public class SelectById {
             e.setCep(cep);
             e.setEstado(estado);
 
+
             return e;
         }
         catch (Exception e) {
@@ -65,6 +66,7 @@ public class SelectById {
             a.setDataNas(nasc);
             a.setSexo(sexo);
             a.setFkCurso(fk_curso);
+            a.setFkEndereco(fk_endereco);
 
             return a;
         }

@@ -28,7 +28,7 @@ public class CRUDAluno implements ICRUD {
 
         System.out.println("Carregando...");
         PrintAll.printAllCurso(SelectAll.selectAllCurso());
-        System.out.print("Escolha o ID do Curso do aluno\nR: ");
+        System.out.print("* Escolha o ID do Curso do aluno\nR: ");
         int fk_curso = inputInt.nextInt();
 
         System.out.print("R: ");
