@@ -52,7 +52,6 @@ public class PrintAll {
     }
     //TODO criar uma classe para print de escolha
     public  static void printEscholhaCurso(Curso[] cursos){
-
         System.out.println("* Qual curso o aluno vai cursar: (Aguarde o carregamento!)");
         for(Curso c : cursos) {
             System.out.println(c.getIdCurso()+ " - " + c.getNome());

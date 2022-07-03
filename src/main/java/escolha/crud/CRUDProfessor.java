@@ -1,5 +1,7 @@
 package escolha.crud;
 
+import consultas.Delete;
+import consultas.InsertInto;
 import consultas.SelectAll;
 import consultas.SelectById;
 import entidades.Professor;
@@ -17,13 +19,15 @@ public class CRUDProfessor implements ICRUD{
     PrintById pb = new PrintById();
     Escolha esc = new Escolha();
 
+    Delete dl = new Delete();
+
     @Override
     public void create(){
         System.out.println("--------------------------\nNOVO PROFESSOR\n");
         System.out.print("Nome: ");
         prof.setNome(input.nextLine());
-        System.out.print("Registro: ");
-        prof.setRegistro(input.nextLine());
+        System.out.print("Int Registro: ");
+        prof.setRegistro(inputInt.nextInt());
         System.out.print("Especialidade: ");
         prof.setEspecialidade(input.nextLine());
         System.out.print("Telefone: ");
@@ -46,7 +50,7 @@ public class CRUDProfessor implements ICRUD{
         prof.setComplemento(input.nextLine());
 
         //Manda pro banco agr
-        System.out.printf("%s - %s - %s",prof.getNome(), prof.getRua(), prof.getEspecialidade());
+        InsertInto.fazerProfessor(prof);
 
         System.out.println("\n* Professor cadastrado com sucesso!!");
         voltar();
@@ -71,7 +75,12 @@ public class CRUDProfessor implements ICRUD{
     @Override
     public void delete(){
         System.out.println("--------------------------\nDELETAR PROFESSOR\n");
+        System.out.print("Digite o ID do professor que deseja apagar:\n");
+        PrintAll.printAllProfessor(SelectAll.selectAllProfessor());
+        System.out.print("R: ");
+        int professorid = inputInt.nextInt();
 
+        dl.deleteProfessor(professorid);
         voltar();
     }
 
@@ -79,7 +88,6 @@ public class CRUDProfessor implements ICRUD{
     public void printAll(){
         System.out.println("--------------------------\nEXIBIR TODOS OS PROFESSORES\n");
         PrintAll.printAllProfessor(SelectAll.selectAllProfessor());
-
         voltar();
     }
 

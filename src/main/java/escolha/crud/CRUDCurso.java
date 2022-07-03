@@ -1,5 +1,6 @@
 package escolha.crud;
 
+import consultas.InsertInto;
 import consultas.SelectAll;
 import consultas.SelectById;
 import entidades.Curso;
@@ -23,14 +24,16 @@ public class CRUDCurso implements ICRUD{
         System.out.println("--------------------------\nNOVO CURSO\n");
         System.out.println("CREATE CURSO");
         System.out.print("Codigo: ");
-        curso.setCodigo(input.nextInt());
+        curso.setCodigo(inputInt.nextInt());
         System.out.print("Nome: ");
         curso.setNome(input.nextLine());
         System.out.print("Descrição: ");
         curso.setDescricao(input.nextLine());
         System.out.print("Numero de Periodos: ");
-        curso.setNumeroPeriodos(input.nextInt());
+        curso.setNumeroPeriodos(inputInt.nextInt());
 
+        InsertInto.fazerCurso(curso);
+        System.out.println("\n* Curso cadastrado com sucesso!!!!");
         voltar();
     }
 

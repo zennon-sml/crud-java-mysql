@@ -83,7 +83,7 @@ public class SelectById {
             ResultSet rs = stmt.executeQuery(query);
             rs.next();
             int id = rs.getInt(1);
-            String registro = rs.getString(2);
+            int registro = rs.getInt(2);
             String nome = rs.getString(3);
             String telefone = rs.getString(4);
             String especialidade = rs.getString(5);

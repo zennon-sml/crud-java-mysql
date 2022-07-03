@@ -2,7 +2,7 @@ package entidades;
 
 public class Professor extends Endereco implements IPessoa{
     int id;
-    String registro;
+    int registro;
     String nome;
     String telefone;
     String especialidade;
@@ -26,7 +26,7 @@ public class Professor extends Endereco implements IPessoa{
         this.telefone = telefone;
     }
 
-    public void setRegistro(String registro) {this.registro = registro;}
+    public void setRegistro(int registro) {this.registro = registro;}
     public void setEspecialidade(String especialidade){
         this.especialidade = especialidade;
     }
@@ -61,7 +61,7 @@ public class Professor extends Endereco implements IPessoa{
         return maiorTitulacao;
     }
 
-    public String getRegistro(){return registro; }
+    public int getRegistro(){return registro; }
     public int getFkEndereco() {return fkEndereco;}
 }
 

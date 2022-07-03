@@ -1,5 +1,7 @@
 package escolha.crud;
 
+import consultas.Delete;
+import consultas.InsertInto;
 import consultas.SelectAll;
 import consultas.SelectById;
 import entidades.Disciplina;
@@ -14,6 +16,8 @@ public class CRUDDisciplina implements ICRUD{
     Disciplina dis = new Disciplina();
     Scanner input = new Scanner(System.in);
     Scanner inputInt = new Scanner(System.in);
+
+    Delete dl = new Delete();
     PrintById pb = new PrintById();
     Escolha esc = new Escolha();
 
@@ -22,14 +26,16 @@ public class CRUDDisciplina implements ICRUD{
     public void create(){
         System.out.println("--------------------------\nNOVA DISCIPLINA\n");
         System.out.print("Codigo: ");
-        dis.setCodigo(input.nextInt());
+        dis.setCodigo(inputInt.nextInt());
         System.out.print("Descrição: ");
         dis.setDescricao(input.nextLine());
         System.out.print("Carga Horaria: ");
         dis.setCargaHoraria(input.nextLine());
         System.out.print("Numero de creditos: ");
-        dis.setNumeroCreditos(input.nextInt());
+        dis.setNumeroCreditos(inputInt.nextInt());
 
+        InsertInto.fazerDisciplina(dis);
+        System.out.println("\n* Curso cadastrado com sucesso!!!!");
         voltar();
     }
 
@@ -54,7 +60,12 @@ public class CRUDDisciplina implements ICRUD{
     @Override
     public void delete(){
         System.out.println("--------------------------\nDELETAR DISCIPLINA\n");
+        System.out.print("Digite o ID da disciplina que deseja apagar:\n");
+        PrintAll.printAllDisciplina(SelectAll.selectAllDisciplina());
+        System.out.print("R: ");
+        int disciplinaid = inputInt.nextInt();
 
+        dl.deleteDisciplina(disciplinaid);
         voltar();
     }
 
@@ -62,7 +73,6 @@ public class CRUDDisciplina implements ICRUD{
     public void printAll(){
         System.out.println("--------------------------\nEXIBIR TODAS AS DISCIPLINAS\n");
         PrintAll.printAllDisciplina(SelectAll.selectAllDisciplina());
-
         voltar();
     }
 

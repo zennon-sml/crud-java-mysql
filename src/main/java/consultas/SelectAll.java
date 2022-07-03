@@ -106,7 +106,7 @@ public class SelectAll {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()){
                 int id = rs.getInt(1);
-                String registro = rs.getString(2);
+                int registro = rs.getInt(2);
                 String nome = rs.getString(3);
                 String telefone = rs.getString(4);
                 String especialidade = rs.getString(5);
@@ -135,7 +135,7 @@ public class SelectAll {
 
             ResultSet linhas = stmt.executeQuery("select count(*) from disciplina");
             linhas.next();
-            Disciplina[] disciplinas = new Disciplina[linhas.getInt(1)];//lista de todos os enderecos
+            Disciplina[] disciplinas = new Disciplina[linhas.getInt(1)];
             int i = 0;
 
             String query = "select * from disciplina;";
@@ -147,7 +147,7 @@ public class SelectAll {
                 String carga_horaria = rs.getString(4);
                 int num_credito = rs.getInt(5);
                 Disciplina d = new Disciplina();
-                //TODO d.setId(id);
+                d.setIdDis(id);
                 d.setCodigo(codigo);
                 d.setDescricao(descricao);
                 d.setCargaHoraria(carga_horaria);
@@ -167,7 +167,7 @@ public class SelectAll {
             Connection con = conexao.fazerConexao();
             Statement stmt = con.createStatement();
 
-            ResultSet linhas = stmt.executeQuery("select count(*) from disciplina");
+            ResultSet linhas = stmt.executeQuery("select count(*) from turma");
             linhas.next();
             Turma[] turmas = new Turma[linhas.getInt(1)];//lista de todos os enderecos
             int i = 0;
@@ -230,4 +230,36 @@ public class SelectAll {
             return null;
         }
     }
+    public static ProfessorDisciplina[] selectAllProfessorDisciplina(){
+        try{
+            Connection con = conexao.fazerConexao();
+            Statement stmt = con.createStatement();
+
+            ResultSet linhas = stmt.executeQuery("select count(*) from professor_disciplina");
+            linhas.next();
+            ProfessorDisciplina[] pds = new ProfessorDisciplina[linhas.getInt(1)];//lista de todos os enderecos
+            int i = 0;
+
+            String query = "select * from professor_disciplina;";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()){
+                int id =  rs.getInt(1);
+                int fk_professor = rs.getInt(2);
+                int fk_disciplina = rs.getInt(3);
+                ProfessorDisciplina prodi = new ProfessorDisciplina();
+                prodi.setid(id);
+                prodi.setFkProfessor(fk_professor);
+                prodi.setFkDisciplina(fk_disciplina);
+                pds[i] = prodi;
+                i++;
+            }
+
+            return pds;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
 }
