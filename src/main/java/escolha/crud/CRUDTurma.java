@@ -47,7 +47,9 @@ public class CRUDTurma implements ICRUD{
     @Override
     public void read(){
         System.out.println("--------------------------\nEXIBIR TURMA\n");
-        System.out.println("Digite o ID do Professor que Turma ver:\nR: ");
+        System.out.println("Carregando...");
+        PrintAll.printAllTurma(SelectAll.selectAllTurma());
+        System.out.print("Digite o ID do Professor que Turma ver:\nR: ");
         int turmaid = inputInt.nextInt();
         pb.printTurma(SelectById.selectTurma(turmaid));
 
@@ -57,9 +59,9 @@ public class CRUDTurma implements ICRUD{
     @Override
     public void update(){
         System.out.println("--------------------------\nATUALIZAR TURMA\n");
-        System.out.print("Digite o ID do Professor que deseja atualizar:\nR: ");
+        System.out.println("carregando...");
         PrintAll.printAllTurma(SelectAll.selectAllTurma());
-        System.out.print("R: ");
+        System.out.print("Digite o ID do Professor que deseja atualizar:\nR: ");
         int turmaID = inputInt.nextInt();
         Turma turmaveia = SelectById.selectTurma(turmaID);
         Turma turma = new Turma();
@@ -77,8 +79,9 @@ public class CRUDTurma implements ICRUD{
     @Override
     public void delete(){
         System.out.println("--------------------------\nDELETAR TURMA\n");
-        System.out.print("Digite o ID da Turma que deseja apagar:\n");
+        System.out.println("Carregando...");
         PrintAll.printAllTurma(SelectAll.selectAllTurma());
+        System.out.print("Digite o ID da Turma que deseja apagar:\n");
         System.out.print("R: ");
         int turmaId = inputInt.nextInt();
         int fk_pd = SelectById.selectTurma(turmaId).getFK_Professor_Disciplina();

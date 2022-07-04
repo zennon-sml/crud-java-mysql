@@ -56,6 +56,8 @@ public class CRUDProfessor implements ICRUD{
     @Override
     public void read(){
         System.out.println("--------------------------\nEXIBIR DADOS DO PROFESSOR\n");
+        System.out.println("Carregando...");
+        PrintAll.printAllProfessor(SelectAll.selectAllProfessor());
         System.out.print("Digite o ID do Professor que deseja ver:\nR: ");
         int professorid = inputInt.nextInt();
         pb.printProfessor(SelectById.selectProfessor(professorid));
@@ -89,8 +91,9 @@ public class CRUDProfessor implements ICRUD{
     @Override
     public void delete(){
         System.out.println("--------------------------\nDELETAR PROFESSOR\n");
-        System.out.print("Digite o ID do professor que deseja apagar:\n");
+        System.out.println("Carregando...");
         PrintAll.printAllProfessor(SelectAll.selectAllProfessor());
+        System.out.print("Digite o ID do professor que deseja apagar:\n");
         System.out.print("R: ");
         int professorid = inputInt.nextInt();
 
@@ -107,6 +110,7 @@ public class CRUDProfessor implements ICRUD{
     }
     public void orientacao(){
         System.out.println("Digite o ID do professor e aluno");
+        System.out.println("Carregando...");
         PrintAll.printAllProfessor(SelectAll.selectAllProfessor());
         System.out.println("Professor ID: ");
         int fk_professor = inputInt.nextInt();

@@ -43,7 +43,9 @@ public class CRUDCurso implements ICRUD{
     @Override
     public void read(){
         System.out.println("--------------------------\nEXIBIR CURSO\n");
-        System.out.println("Digite o ID do Curso que deseja ver:\nR: ");
+        System.out.println("Carregando...");
+        PrintAll.printAllCurso(SelectAll.selectAllCurso());
+        System.out.print("Digite o ID do Curso que deseja ver:\nR: ");
         int cursoid = inputInt.nextInt();
         pb.printCurso(SelectById.selectCurso(cursoid));
         voltar();
@@ -59,9 +61,9 @@ public class CRUDCurso implements ICRUD{
     @Override
     public void delete(){
         System.out.println("--------------------------\nDELETAR CURSO\n");
-        System.out.print("Digite o ID do Curso que deseja apagar:\nR: ");
+        System.out.println("Carregando...");
         PrintAll.printAllCurso(SelectAll.selectAllCurso());
-        System.out.print("R: ");
+        System.out.print("Digite o ID do Curso que deseja apagar:\nR: ");
         int cursoid = inputInt.nextInt();
 
         dl.deleteCurso(cursoid);

@@ -39,7 +39,9 @@ public class CRUDDisciplina implements ICRUD{
     @Override
     public void read(){
         System.out.println("--------------------------\nEXIBIR DISCIPLINA\n");
-        System.out.println("Digite o ID do Disciplina que deseja ver:\nR: ");
+        System.out.println("Carregando...");
+        PrintAll.printAllDisciplina(SelectAll.selectAllDisciplina());
+        System.out.print("Digite o ID do Disciplina que deseja ver:\nR: ");
         int disciplinaid = inputInt.nextInt();
         pb.printDisciplina(SelectById.selectDisciplina(disciplinaid));
 
@@ -50,8 +52,9 @@ public class CRUDDisciplina implements ICRUD{
     @Override
     public void update(){
         System.out.println("--------------------------\nATUALIZAR DISCIPLINA\n");
-        System.out.print("Digite o ID da Disciplina que deseja atualizar:\nR: ");
+        System.out.println("Carregando...");
         PrintAll.printAllDisciplina(SelectAll.selectAllDisciplina());
+        System.out.print("Digite o ID da Disciplina que deseja atualizar:\nR: ");
         System.out.print("R: ");
         int disId = inputInt.nextInt();
         Disciplina velhaDis = SelectById.selectDisciplina(disId);
@@ -72,9 +75,9 @@ public class CRUDDisciplina implements ICRUD{
     @Override
     public void delete(){
         System.out.println("--------------------------\nDELETAR DISCIPLINA\n");
-        System.out.print("Digite o ID da disciplina que deseja apagar:\n");
+        System.out.println("Carregando...");
         PrintAll.printAllDisciplina(SelectAll.selectAllDisciplina());
-        System.out.print("R: ");
+        System.out.print("Digite o ID da disciplina que deseja apagar:\nR: ");
         int disciplinaid = inputInt.nextInt();
 
         dl.deleteDisciplina(disciplinaid);

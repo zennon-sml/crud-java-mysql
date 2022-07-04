@@ -27,10 +27,6 @@ public class CRUDAluno implements ICRUD {
         PrintAll.printAllCurso(SelectAll.selectAllCurso());
         System.out.print("* Escolha o ID do Curso do aluno\nR: ");
         int fk_curso = inputInt.nextInt();
-
-        System.out.print("R: ");
-        int FKCurso = inputInt.nextInt();
-
         System.out.print("Nome: ");
         aluno.setNome(input.nextLine());
         System.out.print("Matricula: ");
@@ -77,6 +73,8 @@ public class CRUDAluno implements ICRUD {
     @Override
     public void read(){
         System.out.println("--------------------------\nEXIBIR DADOS DO ALUNO\n");
+        System.out.println("Carregando...");
+        PrintAll.printAllAluno(SelectAll.selectAllAluno());
         System.out.print("Digite o ID do aluno que deseja ver:\nR: ");
         int alunoid = inputInt.nextInt();
         try {
@@ -92,10 +90,9 @@ public class CRUDAluno implements ICRUD {
     @Override
     public void update(){
         System.out.println("--------------------------\nATUALIZAR ALUNO\n");
-        System.out.print("Digite o ID do Aluno que deseja atualizar:\nR: ");
         System.out.println("Carregando...");
         PrintAll.printAllAluno(SelectAll.selectAllAluno());
-        System.out.print("R: ");
+        System.out.print("Digite o ID do Aluno que deseja atualizar:\nR: ");
         int alunoId = inputInt.nextInt();
         Aluno alunovei = SelectById.selectAluno(alunoId);
         Aluno aluno = new Aluno();
