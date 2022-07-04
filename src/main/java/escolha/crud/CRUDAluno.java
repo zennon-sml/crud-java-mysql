@@ -114,9 +114,9 @@ public class CRUDAluno implements ICRUD {
     @Override
     public void delete(){
         System.out.println("--------------------------\nDELETAR ALUNO\n");
-        System.out.print("Digite o ID do aluno que deseja apagar:\nR: ");
         System.out.println("Carregando...");
         PrintAll.printAllAluno(SelectAll.selectAllAluno());
+        System.out.print("Digite o ID do aluno que deseja apagar:\nR: ");
         int alunoid = inputInt.nextInt();
 
         dl.deleteAluno(alunoid);

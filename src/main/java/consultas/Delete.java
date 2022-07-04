@@ -33,7 +33,6 @@ public class Delete {
             pdst.execute();
             pdst.close();
             System.out.println("Professor apagado com sucesso!!!!");
-            System.out.println("Não foi possivel apagar o aluno");
         }
         catch (Exception e){
             System.out.println(e);
@@ -80,7 +79,7 @@ public class Delete {
             PreparedStatement pdst = con.prepareStatement(query);
             pdst.execute();
             pdst.close();
-            System.out.println("curso com sucesso!!!!");
+            System.out.println("curso apagado com sucesso!!!!");
         }
         catch (Exception e){
             System.out.println(e);
