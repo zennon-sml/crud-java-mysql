@@ -232,6 +232,38 @@ public class SelectAll {
             return null;
         }
     }
+    public static Professor[] selectAllAluProf(int alunoId){
+        try{
+            Connection con = conexao.fazerConexao();
+            Statement stmt = con.createStatement();
+            //pegar todos os orientadores de certo aluno
+//            select p.nome
+//            from aluno_professor ap
+//            join aluno a on a.id = ap.fk_aluno
+//            join professor p on p.id = ap.fk_professor
+//            where a.id = 1
+            ResultSet linhas = stmt.executeQuery("select count(*) from aluno_professor ap join aluno a on a.id = ap.fk_aluno join professor p on p.id = ap.fk_professor where a.id = "+alunoId);
+            linhas.next();
+            Professor[] aluProf = new Professor[linhas.getInt(1)];//lista de todos os enderecos
+            int i = 0;
+
+            String query = "select p.nome from aluno_professor ap join aluno a on a.id = ap.fk_aluno join professor p on p.id = ap.fk_professor where a.id = "+alunoId;
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()){
+                String professor = rs.getString(1);
+                Professor p = new Professor();
+                p.setNome(professor);
+                aluProf[i] = p;
+                i++;
+            }
+            return aluProf;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
     public static ProfessorDisciplina[] selectAllProfessorDisciplina(){
         try{
             Connection con = conexao.fazerConexao();
@@ -263,5 +295,29 @@ public class SelectAll {
             return null;
         }
     }
+    public static String[] selectAlunoCurso(int idcurso){
+        try{
+            Connection con = conexao.fazerConexao();
+            Statement stmt = con.createStatement();
 
+            ResultSet linhas = stmt.executeQuery("select count(*) from aluno join curso on aluno.fk_curso = "+idcurso);
+            linhas.next();
+            String[] alunos = new String[linhas.getInt(1)];//lista de todos os enderecos
+            int i = 0;
+
+            String query = "select a.nome from aluno a join curso c on a.fk_curso = "+idcurso;
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()){
+                String aluno = rs.getString(1);
+                alunos[i] = aluno;
+                i++;
+            }
+
+            return alunos;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
 }
