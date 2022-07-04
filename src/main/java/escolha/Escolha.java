@@ -237,11 +237,13 @@ public class Escolha {
     }
     public void voltarPesquisa(){
         do {
-            System.out.print("9 - Voltar\nR: ");
+            System.out.print("--------------------------\n9 - Voltar\n0 - Menu\nR: ");
             int escolha = input.nextInt();
             try {
                 if (escolha == 9) {
                     menuEscolha();
+                } else if (escolha == 0) {
+                    menu();
                 } else {
                     throw new NumeroNaoListado(escolha);
                 }

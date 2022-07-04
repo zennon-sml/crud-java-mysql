@@ -80,11 +80,13 @@ public class CRUDCurso implements ICRUD{
     @Override
     public void voltar() {
         do {
-            System.out.print("9 - Voltar\nR: ");
+            System.out.print("9 - Voltar\n0 - Menu\nR: ");
             int escolha = input.nextInt();
             try {
                 if (escolha == 9) {
                     esc.curso();
+                }else if (escolha == 0) {
+                    esc.menu();
                 } else {
                     throw new NumeroNaoListado(escolha);
                 }

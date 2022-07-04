@@ -17,9 +17,11 @@ public class PesqCurso implements IPesquisa{
 
     @Override
     public void infos() {
-        System.out.print("* Qual o ID do curso que você deseja saber as informações\nR: ");
+        System.out.print("\n* Qual o ID do curso que você deseja saber as informações\nR: ");
         int cursoid = input.nextInt();
         try {
+            System.out.println("--------------------------\nINFORMAÇÕES DO CURSO\n");
+            System.out.println("Carregando...");
             pb.printInfo(SelectById.selectCurso(cursoid));
         }catch (NullPointerException e) {
             System.out.println("ID não encontrado, tente outro!!");

@@ -15,9 +15,11 @@ public class PesqAluno implements IPesquisa{
     }
     @Override
     public void infos(){
-        System.out.print("* Qual o ID do aluno que você deseja saber as informações\nR: ");
+        System.out.print("\n* Qual o ID do aluno que você deseja saber as informações\nR: ");
         int alunoid = input.nextInt();
         try {
+            System.out.println("--------------------------\nINFORMAÇÕES DO ALUNO\n");
+            System.out.println("Carregando...");
             pb.printInfo(SelectById.selectAluno(alunoid));
         }catch (NullPointerException e){
             System.out.println("ID não encontrado, tente outro!!");

@@ -118,11 +118,13 @@ public class CRUDProfessor implements ICRUD{
     @Override
     public void voltar(){
         do {
-            System.out.print("9 - Voltar\nR: ");
+            System.out.print("9 - Voltar\n0 - Menu\nR: ");
             int escol = input.nextInt();
             try {
                 if (escol == 9) {
                     esc.professor();
+                }else if (escol == 0) {
+                    esc.menu();
                 } else {
                     throw new NumeroNaoListado(escol);
                 }

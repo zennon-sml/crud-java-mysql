@@ -17,9 +17,11 @@ public class PesqTurma implements IPesquisa{
 
     @Override
     public void infos() {
-        System.out.print("* Qual o ID da turma que você deseja saber as informações\nR: ");
+        System.out.print("\n* Qual o ID da turma que você deseja saber as informações\nR: ");
         int turmaid = input.nextInt();
         try {
+            System.out.println("--------------------------\nINFORMAÇÕES DA TURMA\n");
+            System.out.println("Carregando...");
             pb.printInfo(SelectById.selectTurma(turmaid));
         }catch (NullPointerException e) {
             System.out.println("ID não encontrado, tente outro!!");
