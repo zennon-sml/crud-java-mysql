@@ -15,6 +15,8 @@
 
 ### Recursos:
 
+- Utilizando um banco de dados Online do freemysqlhosting.
+
 - CRUD das entidades: Aluno, Professor, Disciplina, Curso, Turma.
 
 - Funçôes de consulta: SelectAll, SelectById, Delete, Update, InsertInto.
